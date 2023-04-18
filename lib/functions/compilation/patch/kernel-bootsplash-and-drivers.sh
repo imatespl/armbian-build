@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 compilation_prepare() {
 
+	source ${SRC}/lib/functions/compilation/patch/drivers_raw_gadget.sh
 	source ${SRC}/lib/functions/compilation/patch/drivers_network.sh
 
 	# Packaging patch for modern kernels should be one for all.
@@ -245,7 +246,7 @@ compilation_prepare() {
 			"$kerneldir/scripts/package/builddeb"
 
 	fi
-		
+	patch_drivers_raw_gadget()	
 	patch_drivers_network
 
 	# Exfat driver
