@@ -87,11 +87,14 @@ fi
 # Since we are having too many options for mirror management,
 # then here is yet another mirror related option.
 # Respecting user's override in case a mirror is unreachable.
+REGIONAL_MIRROR=china
 case $REGIONAL_MIRROR in
+
 	china)
 		[[ -z $USE_MAINLINE_GOOGLE_MIRROR ]] && [[ -z $MAINLINE_MIRROR ]] && MAINLINE_MIRROR=tuna
 		[[ -z $USE_GITHUB_UBOOT_MIRROR ]] && [[ -z $UBOOT_MIRROR ]] && UBOOT_MIRROR=gitee
-		[[ -z $GITHUB_MIRROR ]] && GITHUB_MIRROR=gitclone
+		#[[ -z $GITHUB_MIRROR ]] && GITHUB_MIRROR=gitclone
+		[[ -z $GIT_PROXY ]] && GIT_PROXY='http://192.168.228.1:10809'
 		[[ -z $DOWNLOAD_MIRROR ]] && DOWNLOAD_MIRROR=china
 		;;
 	*)

@@ -268,11 +268,11 @@ create_sources_list()
 #
 improved_git()
 {
-
 	local realgit=$(command -v git)
 	local retries=3
 	local delay=10
 	local count=1
+	$realgit config --global https.proxy $GIT_PROXY
 	while [ $count -lt $retries ]; do
 		$realgit "$@"
 		if [[ $? -eq 0 || -f .git/index.lock ]]; then
@@ -571,14 +571,14 @@ fetch_from_repo()
 			else
 
 				display_alert "Checking out"
-				git checkout -f -q FETCH_HEAD
+				git checkout -f -q FETCH_HEAD 
 				git clean -qdf
 
 			fi
 		else
 
 			display_alert "Checking out"
-			git checkout -f -q FETCH_HEAD
+			git checkout -f -q FETCH_HEAD 
 			git clean -qdf
 
 		fi
